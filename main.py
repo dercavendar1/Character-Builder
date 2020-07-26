@@ -6,56 +6,10 @@ import funcs
 from barbarian import *
 from bard import *
 from character import *
-from dice import *
 from fighter import *
 from rogue import *
 from wizard import *
 
-# Function that serves as the battle loop#######################################
-
-
-def battle(player, enemy):
-    # Battle Loop for both Barbarian Classes####################################
-    barbarian_fight()
-################################################################################
-
-
-# Battle Loop for Bard##########################################################
-    if(isinstance(player, Bard)):
-        bard_fight()
-################################################################################
-
-#  Battle Loop for Bow Fighter##################################################
-    if(isinstance(player, Bow)):
-        bow_fight()
-################################################################################
-
-# Battle Loop for Sword Fighter#################################################
-    if(isinstance(player, Sword)):
-        sword_fight()
-################################################################################
-
-# Battle Loop for Assasin#######################################################
-    if(isinstance(player, Assasin)):
-        assasin_fight()
-################################################################################
-
-# Battle Loop for Thief#########################################################
-    if(isinstance(player, Thief)):
-        thief_fight()
-################################################################################
-
-# Battle Loop for Storm Sub Class Wizard########################################
-    elif(isinstance(player, Storms)):
-        storm_fight()
-################################################################################
-
-# Battle Loop for Arcane Wizard#################################################
-    elif(isinstance(player, Arcanum)):
-        arcane_fight()
-
-
-################################################################################
 load = input('Would you like to load your last saved character? ')
 # Load Previously Saved Character###############################################
 if (load == 'yes'):
