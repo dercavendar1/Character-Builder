@@ -134,7 +134,6 @@ if (load == 'yes'):
 
             for i in range(1, levels):
                 player.levelUP()
-                enemy.levelUP()
 ################################################################################
 # End Of Character Creation Branches############################################
 
