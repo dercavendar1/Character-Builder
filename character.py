@@ -1,7 +1,7 @@
 import math
 import random
 
-import dice
+import funcs
 
 
 class Character():
