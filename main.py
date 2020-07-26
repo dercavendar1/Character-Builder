@@ -21,12 +21,12 @@ if (load == 'yes'):
 
         print("No Saved Data Creating a Base Character\n")
         error = True
-        strength = dice.d20(8)
-        constitution = dice.d20(10)
-        dexterity = dice.d20(8)
-        wisdom = dice.d20(8)
-        intelligence = dice.d20(8)
-        charisma = dice.d20(8)
+        strength = funcs.d20(8)
+        constitution = funcs.d20(10)
+        dexterity = funcs.d20(8)
+        wisdom = funcs.d20(8)
+        intelligence = funcs.d20(8)
+        charisma = funcs.d20(8)
 
         player = Character(strength, constitution, dexterity,
                            intelligence, wisdom, charisma)
@@ -141,12 +141,12 @@ if (load == 'yes'):
 # Initial Character Creation with Random stats##################################
 
 else:
-    strength = dice.d20(8)
-    constitution = dice.d20(10)
-    dexterity = dice.d20(8)
-    wisdom = dice.d20(8)
-    intelligence = dice.d20(8)
-    charisma = dice.d20(8)
+    strength = funcs.d20(8)
+    constitution = funcs.d20(10)
+    dexterity = funcs.d20(8)
+    wisdom = funcs.d20(8)
+    intelligence = funcs.d20(8)
+    charisma = funcs.d20(8)
 
     player = Character(strength, constitution, dexterity,
                        intelligence, wisdom, charisma)
@@ -259,12 +259,12 @@ else:
 # End Of Character Creation Branches############################################
 
 #Creates an enemy with reduced possible stats###################################
-strength = dice.d20(8)
-constitution = dice.d20(10)
-dexterity = dice.d20(8)
-intelligence = dice.d20(8)
-wisdom = dice.d20(8)
-charisma = dice.d20(8)
+strength = funcs.d20(8)
+constitution = funcs.d20(10)
+dexterity = funcs.d20(8)
+intelligence = funcs.d20(8)
+wisdom = funcs.d20(8)
+charisma = funcs.d20(8)
 
 enemy = Character(strength, constitution, dexterity,
                   intelligence, wisdom, charisma)

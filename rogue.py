@@ -14,39 +14,39 @@ def assasin_fight():
             print(enemy.hp)
         attack_type = input("Unarmed or Armed? ")
         if(attack_type.lower() == 'armed'):
-            hit = dice.d20(1)
-            evade = dice.d20(1) + enemy.dexMod
+            hit = funcs.d20(1)
+            evade = funcs.d20(1) + enemy.dexMod
             enemy.hp = enemy.hp - player.finesseWeaponAttack(hit, evade)
-            hit = dice.d20(1)
-            evade = dice.d20(1) + player.dexMod
+            hit = funcs.d20(1)
+            evade = funcs.d20(1) + player.dexMod
             player.hp = player.hp - enemy.unarmedAttack(hit, evade)
         else:
-            hit = dice.d20(1)
-            evade = dice.d20(1) + enemy.dexMod
+            hit = funcs.d20(1)
+            evade = funcs.d20(1) + enemy.dexMod
             enemy.hp = enemy.hp - player.unarmedAttack(hit, evade)
-            hit = dice.d20(1)
-            evade = dice.d20(1) + player.dexMod
+            hit = funcs.d20(1)
+            evade = funcs.d20(1) + player.dexMod
             player.hp = player.hp - enemy.unarmedAttack(hit, evade)
         print('Your Health ', player.getStats()["Health"])
         print('Enemy Health ', enemy.getStats()["Health"])
 
 
-def thief_fight:
+def thief_fight():
     while (player.hp > 0 and enemy.hp > 0):
         attack_type = input("Unarmed or Armed? ")
         if(attack_type.lower() == 'armed'):
-            hit = dice.d20(1)
-            evade = dice.d20(1) + enemy.dexMod
+            hit = funcs.d20(1)
+            evade = funcs.d20(1) + enemy.dexMod
             enemy.hp = enemy.hp - player.finesseWeaponAttack(hit, evade)
-            hit = dice.d20(1)
-            evade = dice.d20(1) + player.dexMod
+            hit = funcs.d20(1)
+            evade = funcs.d20(1) + player.dexMod
             player.hp = player.hp - enemy.unarmedAttack(hit, evade)
         else:
-            hit = dice.d20(1)
-            evade = dice.d20(1) + enemy.dexMod
+            hit = funcs.d20(1)
+            evade = funcs.d20(1) + enemy.dexMod
             enemy.hp = enemy.hp - player.unarmedAttack(hit, evade)
-            hit = dice.d20(1)
-            evade = dice.d20(1) + player.dexMod
+            hit = funcs.d20(1)
+            evade = funcs.d20(1) + player.dexMod
             player.hp = player.hp - enemy.unarmedAttack(hit, evade)
         print('Your Health ', player.getStats()["Health"])
         print('Enemy Health ', enemy.getStats()["Health"])
@@ -70,7 +70,7 @@ class Rogue(Character):
         return stats
 
     def levelUP(self):
-        self.hp = self.hp + (dice.d8(1) + self.conMod)
+        self.hp = self.hp + (funcs.d8(1) + self.conMod)
         self.level += 1
         self.stealth_flag = False
 
@@ -96,7 +96,7 @@ class Assasin(Rogue):
 
     def stealth_attack(self):
         if(self.stealth_flag == False):
-            damage = (dice.d8(1) + dice.d8(1) + dice.d8(1)) + \
+            damage = (funcs.d8(1) + funcs.d8(1) + funcs.d8(1)) + \
                 self.strMod + self.dexMod
             self.Stealth_flag = True
         else:
@@ -122,7 +122,7 @@ class Thief(Rogue):
 
     def finesseWeaponAttack(self, hit, evade):
         if hit > (evade / 2):
-            damage = (dice.d4(1) + dice.d4(1)) + self.dexMod
+            damage = (funcs.d4(1) + funcs.d4(1)) + self.dexMod
         else:
-            damage = dice.d4(1) + self.dexMod
+            damage = funcs.d4(1) + self.dexMod
         return damage

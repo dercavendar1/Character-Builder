@@ -40,7 +40,7 @@ class Character():
                           self.dexMod + self.intMod + self.wisMod + self.chaMod)
 
     def levelUP(self):
-        self.hp = self.hp + (dice.d6(1) + self.conMod)
+        self.hp = self.hp + (funcs.d6(1) + self.conMod)
         self.level += 1
 
     def getStats(self):
@@ -55,21 +55,21 @@ class Character():
 
     def unarmedAttack(self, hit, evade):
         if hit > evade:
-            damage = (dice.d4(1)) + self.strMod
+            damage = (funcs.d4(1)) + self.strMod
         else:
             damage = 0
         return damage
 
     def heavyWeaponAttack(self, hit, evade):
         if hit > evade:
-            damage = (dice.d8(1)) + self.strMod
+            damage = (funcs.d8(1)) + self.strMod
         else:
             damage = 0
         return damage
 
     def finesseWeaponAttack(self, hit, evade):
         if hit > evade:
-            damage = (dice.d4(1) + dice.d4(1)) + self.dexMod
+            damage = (funcs.d4(1) + funcs.d4(1)) + self.dexMod
         else:
             damage = 0
         return damage

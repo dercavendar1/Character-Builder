@@ -10,18 +10,18 @@ def barbarian_fight():
         while (player.hp > 0 and enemy.hp > 0):
             attack_type = input("Unarmed or Armed? ")
             if(attack_type.lower() == 'armed'):
-                hit = dice.d20(1)
-                evade = dice.d20(1) + enemy.dexMod
+                hit = funcs.d20(1)
+                evade = funcs.d20(1) + enemy.dexMod
                 enemy.hp = enemy.hp - player.heavyWeaponAttack(hit, evade)
-                hit = dice.d20(1)
-                evade = dice.d20(1) + player.dexMod
+                hit = funcs.d20(1)
+                evade = funcs.d20(1) + player.dexMod
                 player.hp = player.hp - enemy.unarmedAttack(hit, evade)
             else:
-                hit = dice.d20(1)
-                evade = dice.d20(1) + enemy.dexMod
+                hit = funcs.d20(1)
+                evade = funcs.d20(1) + enemy.dexMod
                 enemy.hp = enemy.hp - player.unarmedAttack(hit, evade)
-                hit = dice.d20(1)
-                evade = dice.d20(1) + player.dexMod
+                hit = funcs.d20(1)
+                evade = funcs.d20(1) + player.dexMod
                 player.hp = player.hp - enemy.unarmedAttack(hit, evade)
             print('Your Health ', player.getStats()["Health"])
             print('Enemy Health ', enemy.getStats()["Health"])
@@ -41,7 +41,7 @@ class Barbarian(Character):
         self.hp = (12 + self.conMod)
 
     def levelUP(self):
-        self.hp = self.hp + (dice.d12(4) + self.conMod)
+        self.hp = self.hp + (funcs.d12(4) + self.conMod)
         self.level += 1
 
     def getStats(self):
