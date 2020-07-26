@@ -5,6 +5,48 @@ import dice
 from character import Character
 
 
+def bow_fight():
+    while (player.hp > 0 and enemy.hp > 0):
+        attack_type = input("Unarmed or Armed? ")
+        if(attack_type.lower() == 'armed'):
+            hit = dice.d20(1)
+            evade = dice.d20(1) + enemy.dexMod
+            enemy.hp = enemy.hp - player.finesseWeaponAttack(hit, evade)
+            hit = dice.d20(1)
+            evade = dice.d20(10) + player.dexMod
+            player.hp = player.hp - enemy.unarmedAttack(hit, evade)
+        else:
+            hit = dice.d20(1)
+            evade = dice.d20(1) + enemy.dexMod
+            enemy.hp = enemy.hp - player.unarmedAttack(hit, evade)
+            hit = dice.d20(1)
+            evade = dice.d20(1) + player.dexMod
+            player.hp = player.hp - enemy.unarmedAttack(hit, evade)
+        print('Your Health ', player.getStats()["Health"])
+        print('Enemy Health ', enemy.getStats()["Health"])
+
+
+def sword_fight():
+    while (player.hp > 0 and enemy.hp > 0):
+        attack_type = input("Unarmed or Armed? ")
+        if(attack_type.lower() == 'armed'):
+            hit = dice.d20(1)
+            evade = dice.d20(1) + enemy.dexMod
+            enemy.hp = enemy.hp - player.heavyWeaponAttack(hit, evade)
+            hit = dice.d20(1)
+            evade = dice.d20(1) + player.dexMod
+            player.hp = player.hp - enemy.unarmedAttack(hit, evade)
+        else:
+            hit = dice.d20(1)
+            evade = dice.d20(1) + enemy.dexMod
+            enemy.hp = enemy.hp - player.unarmedAttack(hit, evade)
+            hit = dice.d20(1)
+            evade = dice.d20(1) + player.dexMod
+            player.hp = player.hp - enemy.unarmedAttack(hit, evade)
+        print('Your Health ', player.getStats()["Health"])
+        print('Enemy Health ', enemy.getStats()["Health"])
+
+
 class Fighter(Character):
 
     """Sub Class for Fighter adds attr for sub class of fighter character"""

@@ -5,6 +5,50 @@ import dice
 from character import Character
 
 
+def storm_fight():
+    while (player.hp > 0 and enemy.hp > 0):
+        attack_type = input("Unarmed or Lightning Bolt? ")
+        if(attack_type.lower() == 'bolt' or attack_type.lower() == 'lightning' or attack_type.lower() == 'magic'):
+            hit = dice.d20(1)
+            evade = dice.d20(1) + enemy.dexMod
+            enemy.hp = enemy.hp - \
+                player.lightning_bolt(hit, evade, enemy.dexMod)
+            hit = dice.d20(1)
+            evade = dice.d20(1) + player.dexMod
+            player.hp = player.hp - enemy.unarmedAttack(hit, evade)
+        else:
+            hit = dice.d20(1)
+            evade = dice.d20(1) + enemy.dexMod
+            enemy.hp = enemy.hp - player.unarmedAttack(hit, evade)
+            hit = dice.d20(1)
+            evade = dice.d20(1) + player.dexMod
+            player.hp = player.hp - enemy.unarmedAttack(hit, evade)
+        print('Your Health ', player.getStats()["Health"])
+        print('Enemy Health ', enemy.getStats()["Health"])
+
+
+def arcane_fight():
+    while (player.hp > 0 and enemy.hp > 0):
+        attack_type = input("Unarmed or Fireball? ")
+        if(attack_type.lower() == 'ball' or attack_type.lower() == 'fireball' or attack_type.lower() == 'magic'):
+            hit = dice.d20(1)
+            evade = dice.d20(1) + enemy.dexMod
+            enemy.hp = enemy.hp - \
+                player.fireball(hit, evade, enemy.dexMod)
+            hit = dice.d20(1)
+            evade = dice.d20(1) + player.dexMod
+            player.hp = player.hp - enemy.unarmedAttack(hit, evade)
+        else:
+            hit = dice.d20(1)
+            evade = dice.d20(1) + enemy.dexMod
+            enemy.hp = enemy.hp - player.unarmedAttack(hit, evade)
+            hit = dice.d20(1)
+            evade = dice.d20(1) + player.dexMod
+            player.hp = player.hp - enemy.unarmedAttack(hit, evade)
+        print('Your Health ', player.getStats()["Health"])
+        print('Enemy Health ', enemy.getStats()["Health"])
+
+
 class Wizard(Character):
 
     def __init__(self, strength, constitution, dexterity,

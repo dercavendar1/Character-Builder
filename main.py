@@ -11,193 +11,48 @@ from fighter import *
 from rogue import *
 from wizard import *
 
-# Change made to test github link
 # Function that serves as the battle loop#######################################
 
 
 def battle(player, enemy):
     # Battle Loop for both Barbarian Classes####################################
-    if(isinstance(player, Barbarian)):
-        while (player.hp > 0 and enemy.hp > 0):
-            attack_type = input("Unarmed or Armed? ")
-            if(attack_type.lower() == 'armed'):
-                hit = dice.d20(1)
-                evade = dice.d20(1) + enemy.dexMod
-                enemy.hp = enemy.hp - player.heavyWeaponAttack(hit, evade)
-                hit = dice.d20(1)
-                evade = dice.d20(1) + player.dexMod
-                player.hp = player.hp - enemy.unarmedAttack(hit, evade)
-            else:
-                hit = dice.d20(1)
-                evade = dice.d20(1) + enemy.dexMod
-                enemy.hp = enemy.hp - player.unarmedAttack(hit, evade)
-                hit = dice.d20(1)
-                evade = dice.d20(1) + player.dexMod
-                player.hp = player.hp - enemy.unarmedAttack(hit, evade)
-            print('Your Health ', player.getStats()["Health"])
-            print('Enemy Health ', enemy.getStats()["Health"])
+    barbarian_fight()
 ################################################################################
 
 
 # Battle Loop for Bard##########################################################
     if(isinstance(player, Bard)):
-        while (player.hp > 0 and enemy.hp > 0):
-            attack_type = input("Unarmed or Armed? ")
-            if(attack_type.lower() == 'armed'):
-                hit = dice.d20(1)
-                evade = dice.d20(1) + enemy.dexMod
-                enemy.hp = enemy.hp - player.finesseWeaponAttack(hit, evade)
-                hit = dice.d20(1)
-                evade = dice.d20(1) + player.dexMod
-                player.hp = player.hp - enemy.unarmedAttack(hit, evade)
-            else:
-                hit = dice.d20(1)
-                evade = dice.d20(1) + enemy.dexMod
-                enemy.hp = enemy.hp - player.unarmedAttack(hit, evade)
-                hit = dice.d20(1)
-                evade = dice.d20(1) + player.dexMod
-                player.hp = player.hp - enemy.unarmedAttack(hit, evade)
-            print('Your Health ', player.getStats()["Health"])
-            print('Enemy Health ', enemy.getStats()["Health"])
+        bard_fight()
 ################################################################################
 
 #  Battle Loop for Bow Fighter##################################################
     if(isinstance(player, Bow)):
-        while (player.hp > 0 and enemy.hp > 0):
-            attack_type = input("Unarmed or Armed? ")
-            if(attack_type.lower() == 'armed'):
-                hit = dice.d20(1)
-                evade = dice.d20(1) + enemy.dexMod
-                enemy.hp = enemy.hp - player.finesseWeaponAttack(hit, evade)
-                hit = dice.d20(1)
-                evade = dice.d20(10) + player.dexMod
-                player.hp = player.hp - enemy.unarmedAttack(hit, evade)
-            else:
-                hit = dice.d20(1)
-                evade = dice.d20(1) + enemy.dexMod
-                enemy.hp = enemy.hp - player.unarmedAttack(hit, evade)
-                hit = dice.d20(1)
-                evade = dice.d20(1) + player.dexMod
-                player.hp = player.hp - enemy.unarmedAttack(hit, evade)
-            print('Your Health ', player.getStats()["Health"])
-            print('Enemy Health ', enemy.getStats()["Health"])
+        bow_fight()
 ################################################################################
 
 # Battle Loop for Sword Fighter#################################################
     if(isinstance(player, Sword)):
-        while (player.hp > 0 and enemy.hp > 0):
-            attack_type = input("Unarmed or Armed? ")
-            if(attack_type.lower() == 'armed'):
-                hit = dice.d20(1)
-                evade = dice.d20(1) + enemy.dexMod
-                enemy.hp = enemy.hp - player.heavyWeaponAttack(hit, evade)
-                hit = dice.d20(1)
-                evade = dice.d20(1) + player.dexMod
-                player.hp = player.hp - enemy.unarmedAttack(hit, evade)
-            else:
-                hit = dice.d20(1)
-                evade = dice.d20(1) + enemy.dexMod
-                enemy.hp = enemy.hp - player.unarmedAttack(hit, evade)
-                hit = dice.d20(1)
-                evade = dice.d20(1) + player.dexMod
-                player.hp = player.hp - enemy.unarmedAttack(hit, evade)
-            print('Your Health ', player.getStats()["Health"])
-            print('Enemy Health ', enemy.getStats()["Health"])
+        sword_fight()
 ################################################################################
 
 # Battle Loop for Assasin#######################################################
     if(isinstance(player, Assasin)):
-        while (player.hp > 0 and enemy.hp > 0):
-
-            if(player.stealth_flag == True):
-                print('Stealth Attack First Strike!')
-                enemy.hp -= player.stealth_attack()
-                print(enemy.hp)
-            attack_type = input("Unarmed or Armed? ")
-            if(attack_type.lower() == 'armed'):
-                hit = dice.d20(1)
-                evade = dice.d20(1) + enemy.dexMod
-                enemy.hp = enemy.hp - player.finesseWeaponAttack(hit, evade)
-                hit = dice.d20(1)
-                evade = dice.d20(1) + player.dexMod
-                player.hp = player.hp - enemy.unarmedAttack(hit, evade)
-            else:
-                hit = dice.d20(1)
-                evade = dice.d20(1) + enemy.dexMod
-                enemy.hp = enemy.hp - player.unarmedAttack(hit, evade)
-                hit = dice.d20(1)
-                evade = dice.d20(1) + player.dexMod
-                player.hp = player.hp - enemy.unarmedAttack(hit, evade)
-            print('Your Health ', player.getStats()["Health"])
-            print('Enemy Health ', enemy.getStats()["Health"])
+        assasin_fight()
 ################################################################################
 
 # Battle Loop for Thief#########################################################
     if(isinstance(player, Thief)):
-        while (player.hp > 0 and enemy.hp > 0):
-            attack_type = input("Unarmed or Armed? ")
-            if(attack_type.lower() == 'armed'):
-                hit = dice.d20(1)
-                evade = dice.d20(1) + enemy.dexMod
-                enemy.hp = enemy.hp - player.finesseWeaponAttack(hit, evade)
-                hit = dice.d20(1)
-                evade = dice.d20(1) + player.dexMod
-                player.hp = player.hp - enemy.unarmedAttack(hit, evade)
-            else:
-                hit = dice.d20(1)
-                evade = dice.d20(1) + enemy.dexMod
-                enemy.hp = enemy.hp - player.unarmedAttack(hit, evade)
-                hit = dice.d20(1)
-                evade = dice.d20(1) + player.dexMod
-                player.hp = player.hp - enemy.unarmedAttack(hit, evade)
-            print('Your Health ', player.getStats()["Health"])
-            print('Enemy Health ', enemy.getStats()["Health"])
+        thief_fight()
 ################################################################################
 
 # Battle Loop for Storm Sub Class Wizard########################################
     elif(isinstance(player, Storms)):
-        while (player.hp > 0 and enemy.hp > 0):
-            attack_type = input("Unarmed or Lightning Bolt? ")
-            if(attack_type.lower() == 'bolt' or attack_type.lower() == 'lightning' or attack_type.lower() == 'magic'):
-                hit = dice.d20(1)
-                evade = dice.d20(1) + enemy.dexMod
-                enemy.hp = enemy.hp - \
-                    player.lightning_bolt(hit, evade, enemy.dexMod)
-                hit = dice.d20(1)
-                evade = dice.d20(1) + player.dexMod
-                player.hp = player.hp - enemy.unarmedAttack(hit, evade)
-            else:
-                hit = dice.d20(1)
-                evade = dice.d20(1) + enemy.dexMod
-                enemy.hp = enemy.hp - player.unarmedAttack(hit, evade)
-                hit = dice.d20(1)
-                evade = dice.d20(1) + player.dexMod
-                player.hp = player.hp - enemy.unarmedAttack(hit, evade)
-            print('Your Health ', player.getStats()["Health"])
-            print('Enemy Health ', enemy.getStats()["Health"])
+        storm_fight()
 ################################################################################
 
 # Battle Loop for Arcane Wizard#################################################
     elif(isinstance(player, Arcanum)):
-        while (player.hp > 0 and enemy.hp > 0):
-            attack_type = input("Unarmed or Fireball? ")
-            if(attack_type.lower() == 'ball' or attack_type.lower() == 'fireball' or attack_type.lower() == 'magic'):
-                hit = dice.d20(1)
-                evade = dice.d20(1) + enemy.dexMod
-                enemy.hp = enemy.hp - \
-                    player.fireball(hit, evade, enemy.dexMod)
-                hit = dice.d20(1)
-                evade = dice.d20(1) + player.dexMod
-                player.hp = player.hp - enemy.unarmedAttack(hit, evade)
-            else:
-                hit = dice.d20(1)
-                evade = dice.d20(1) + enemy.dexMod
-                enemy.hp = enemy.hp - player.unarmedAttack(hit, evade)
-                hit = dice.d20(1)
-                evade = dice.d20(1) + player.dexMod
-                player.hp = player.hp - enemy.unarmedAttack(hit, evade)
-            print('Your Health ', player.getStats()["Health"])
-            print('Enemy Health ', enemy.getStats()["Health"])
+        arcane_fight()
 
 
 ################################################################################
