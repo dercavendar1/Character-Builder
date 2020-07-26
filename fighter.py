@@ -5,7 +5,7 @@ import funcs
 from character import Character
 
 
-def bow_fight():
+def bow_fight(player, enemy):
     while (player.hp > 0 and enemy.hp > 0):
         attack_type = input("Unarmed or Armed? ")
         if(attack_type.lower() == 'armed'):
@@ -26,7 +26,7 @@ def bow_fight():
         print('Enemy Health ', enemy.getStats()["Health"])
 
 
-def sword_fight():
+def sword_fight(player, enemy):
     while (player.hp > 0 and enemy.hp > 0):
         attack_type = input("Unarmed or Armed? ")
         if(attack_type.lower() == 'armed'):

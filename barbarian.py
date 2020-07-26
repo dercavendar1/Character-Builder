@@ -5,26 +5,25 @@ import funcs
 from character import Character
 
 
-def barbarian_fight():
-    if(isinstance(player, Barbarian)):
-        while (player.hp > 0 and enemy.hp > 0):
-            attack_type = input("Unarmed or Armed? ")
-            if(attack_type.lower() == 'armed'):
-                hit = funcs.d20(1)
-                evade = funcs.d20(1) + enemy.dexMod
-                enemy.hp = enemy.hp - player.heavyWeaponAttack(hit, evade)
-                hit = funcs.d20(1)
-                evade = funcs.d20(1) + player.dexMod
-                player.hp = player.hp - enemy.unarmedAttack(hit, evade)
-            else:
-                hit = funcs.d20(1)
-                evade = funcs.d20(1) + enemy.dexMod
-                enemy.hp = enemy.hp - player.unarmedAttack(hit, evade)
-                hit = funcs.d20(1)
-                evade = funcs.d20(1) + player.dexMod
-                player.hp = player.hp - enemy.unarmedAttack(hit, evade)
-            print('Your Health ', player.getStats()["Health"])
-            print('Enemy Health ', enemy.getStats()["Health"])
+def barbarian_fight(player, enemy):
+    while (player.hp > 0 and enemy.hp > 0):
+        attack_type = input("Unarmed or Armed? ")
+        if(attack_type.lower() == 'armed'):
+            hit = funcs.d20(1)
+            evade = funcs.d20(1) + enemy.dexMod
+            enemy.hp = enemy.hp - player.heavyWeaponAttack(hit, evade)
+            hit = funcs.d20(1)
+            evade = funcs.d20(1) + player.dexMod
+            player.hp = player.hp - enemy.unarmedAttack(hit, evade)
+        else:
+            hit = funcs.d20(1)
+            evade = funcs.d20(1) + enemy.dexMod
+            enemy.hp = enemy.hp - player.unarmedAttack(hit, evade)
+            hit = funcs.d20(1)
+            evade = funcs.d20(1) + player.dexMod
+            player.hp = player.hp - enemy.unarmedAttack(hit, evade)
+        print('Your Health ', player.getStats()["Health"])
+        print('Enemy Health ', enemy.getStats()["Health"])
 
 
 class Barbarian(Character):

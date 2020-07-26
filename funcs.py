@@ -47,27 +47,28 @@ def d4(min_roll):  # method for rolling an 4 sided die
 
 
 def battle(player, enemy):
-    # Battle Loop for both Barbarian Classes####################################
-    barbarian_fight()
+    # Battle Loop for both Barbarian Classes########################################
+    if(isinstance(player, Barbarian)):
+        barbarian_fight(player, enemy)
 # Battle Loop for Bard##########################################################
     if(isinstance(player, Bard)):
-        bard_fight()
+        bard_fight(player, enemy)
 #  Battle Loop for Bow Fighter##################################################
     if(isinstance(player, Bow)):
-        bow_fight()
+        bow_fight(player, enemy)
 # Battle Loop for Sword Fighter#################################################
     if(isinstance(player, Sword)):
-        sword_fight()
+        sword_fight(player, enemy)
 # Battle Loop for Assasin#######################################################
     if(isinstance(player, Assasin)):
-        assasin_fight()
+        assasin_fight(player, enemy)
 # Battle Loop for Thief#########################################################
     if(isinstance(player, Thief)):
-        thief_fight()
+        thief_fight(player, enemy)
 # Battle Loop for Storm Sub Class Wizard########################################
     elif(isinstance(player, Storms)):
-        storm_fight()
+        storm_fight(player, enemy)
 # Battle Loop for Arcane Wizard#################################################
     elif(isinstance(player, Arcanum)):
-        arcane_fight()
+        arcane_fight(player, enemy)
 #End Battle Loop Function#######################################################

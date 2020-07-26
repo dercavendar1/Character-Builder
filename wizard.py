@@ -5,7 +5,7 @@ import funcs
 from character import Character
 
 
-def storm_fight():
+def storm_fight(player, enemy):
     while (player.hp > 0 and enemy.hp > 0):
         attack_type = input("Unarmed or Lightning Bolt? ")
         if(attack_type.lower() == 'bolt' or attack_type.lower() == 'lightning' or attack_type.lower() == 'magic'):
@@ -27,7 +27,7 @@ def storm_fight():
         print('Enemy Health ', enemy.getStats()["Health"])
 
 
-def arcane_fight():
+def arcane_fight(player, enemy):
     while (player.hp > 0 and enemy.hp > 0):
         attack_type = input("Unarmed or Fireball? ")
         if(attack_type.lower() == 'ball' or attack_type.lower() == 'fireball' or attack_type.lower() == 'magic'):

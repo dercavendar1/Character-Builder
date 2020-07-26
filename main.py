@@ -276,7 +276,7 @@ while(enemy.level < player.level):
 print(player.getStats(), '\n')
 print(enemy.getStats(), '\n')
 
-battle(player, enemy)
+funcs.battle(player, enemy)
 
 if (player.hp > enemy.hp):
     print("\nYou Win")

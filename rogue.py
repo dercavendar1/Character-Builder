@@ -5,7 +5,7 @@ import funcs
 from character import Character
 
 
-def assasin_fight():
+def assasin_fight(player, enemy):
     while (player.hp > 0 and enemy.hp > 0):
 
         if(player.stealth_flag == True):
@@ -31,7 +31,7 @@ def assasin_fight():
         print('Enemy Health ', enemy.getStats()["Health"])
 
 
-def thief_fight():
+def thief_fight(player, enemy):
     while (player.hp > 0 and enemy.hp > 0):
         attack_type = input("Unarmed or Armed? ")
         if(attack_type.lower() == 'armed'):

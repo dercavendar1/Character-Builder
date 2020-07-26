@@ -5,7 +5,7 @@ import funcs
 from character import Character
 
 
-def bard_fight():
+def bard_fight(player, enemy):
     while (player.hp > 0 and enemy.hp > 0):
         attack_type = input("Unarmed or Armed? ")
         if(attack_type.lower() == 'armed'):
