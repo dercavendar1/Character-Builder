@@ -1,4 +1,5 @@
 import json
+import os
 import pickle
 import random
 
@@ -10,136 +11,21 @@ from fighter import *
 from rogue import *
 from wizard import *
 
-load = input('Would you like to load your last saved character? ')
+saved_data_exists = os.path.exists("savedcharacter.obj")
+
+if (saved_data_exists == True):
+    load = input('Would you like to load your last saved character? ')
+else:
+    load = 'no'
 # Load Previously Saved Character###############################################
 if (load == 'yes'):
-    try:
-        file = open('savedcharacter.obj', 'rb')
-        player = pickle.load(file)
-    except:
-        # TODO: Figure Out How to handle no file exception without rewriting entire character creation block in the exception
+    file = open('savedcharacter.obj', 'rb')
+    player = pickle.load(file)
 
-        print("No Saved Data Creating a Base Character\n")
-        error = True
-        strength = funcs.d20(8)
-        constitution = funcs.d20(10)
-        dexterity = funcs.d20(8)
-        wisdom = funcs.d20(8)
-        intelligence = funcs.d20(8)
-        charisma = funcs.d20(8)
-
-        player = Character(strength, constitution, dexterity,
-                           intelligence, wisdom, charisma)
-        print(player.getStats())
-
-    #Allows user to choose what class their character is and resets character#####
-        characterClass = None
-        while characterClass not in ('bard', 'wizard', 'fighter', 'rogue', 'barbarian'):
-            characterClass = input(
-                'What Class Do You Want (Barbarian, Bard, Fighter, Rogue, or Wizard)? ').lower()
-    ###############################################################################
-
-    # Branching Paths that allow user to choose sub class appropriate to chosen class
-    # Barbarian Class Branch########################################################
-        if (characterClass.lower() == 'barbarian'):
-            player = Barbarian(player.strength, player.constitution, player.dexterity,
-                               player.intelligence, player.wisdom, player.charisma)
-            print(player.getStats())
-            answer = None
-            while answer not in ("totem", "tank"):
-                answer = input("What Sub Class (Totem or Tank): ").lower()
-                if(answer == "totem"):
-                    player = Totem(player.strength, player.constitution, player.dexterity,
-                                   player.intelligence, player.wisdom, player.charisma)
-                elif(answer == "tank"):
-                    player = Tank(player.strength, player.constitution, player.dexterity,
-                                  player.intelligence, player.wisdom, player.charisma)
-                else:
-                    print("Please enter Totem or Tank.")
-    ################################################################################
-
-    # Bard Class Branch#############################################################
-        if (characterClass.lower() == 'bard'):
-            player = Bard(player.strength, player.constitution, player.dexterity,
-                          player.intelligence, player.wisdom, player.charisma)
-            print(player.getStats())
-            answer = None
-            while answer not in ("eloquent", "valor"):
-                answer = input("What Sub Class (Eloquent or Valor): ").lower()
-                if(answer == "eloquent"):
-                    player = Eloquent(player.strength, player.constitution, player.dexterity,
-                                      player.intelligence, player.wisdom, player.charisma)
-                elif(answer == "valor"):
-                    player = Valor(player.strength, player.constitution, player.dexterity,
-                                   player.intelligence, player.wisdom, player.charisma)
-                else:
-                    print("Please enter Eloquent or Valor.")
-    ################################################################################
-
-    # Fighter Class  Branch#########################################################
-        if (characterClass.lower() == 'fighter'):
-            player = Fighter(player.strength, player.constitution, player.dexterity,
-                             player.intelligence, player.wisdom, player.charisma)
-            print(player.getStats())
-            answer = None
-            while answer not in ("sword", "bow"):
-                answer = input("What Sub Class (Sword or Bow): ").lower()
-                if(answer == "sword"):
-                    player = Sword(player.strength, player.constitution, player.dexterity,
-                                   player.intelligence, player.wisdom, player.charisma)
-                elif(answer == "bow"):
-                    player = Bow(player.strength, player.constitution, player.dexterity,
-                                 player.intelligence, player.wisdom, player.charisma)
-                else:
-                    print("Please enter Sword or Bow.")
-    ################################################################################
-
-    # Rogue Class Branch############################################################
-        if (characterClass.lower() == 'rogue'):
-            player = Rogue(player.strength, player.constitution, player.dexterity,
-                           player.intelligence, player.wisdom, player.charisma)
-            print(player.getStats())
-            answer = None
-            while answer not in ("assasin", "thief"):
-                answer = input("What Sub Class (Assasin or Thief): ").lower()
-                if(answer == "assasin"):
-                    player = Assasin(player.strength, player.constitution, player.dexterity,
-                                     player.intelligence, player.wisdom, player.charisma)
-                elif(answer == "thief"):
-                    player = Thief(player.strength, player.constitution, player.dexterity,
-                                   player.intelligence, player.wisdom, player.charisma)
-                else:
-                    print("Please enter Assasin or Thief.")
-    ################################################################################
-
-    # Wizard Class Branch###########################################################
-        if (characterClass.lower() == 'wizard'):
-            player = Wizard(player.strength, player.constitution, player.dexterity,
-                            player.intelligence, player.wisdom, player.charisma)
-            print(player.getStats())
-            answer = None
-            while answer not in ("arcane", "storm"):
-                answer = input("What Speciality (Arcane or Storm): ").lower()
-                if(answer == "arcane"):
-                    player = Arcanum(player.strength, player.constitution, player.dexterity,
-                                     player.intelligence, player.wisdom, player.charisma)
-                elif(answer == "storm"):
-                    player = Storms(player.strength, player.constitution, player.dexterity,
-                                    player.intelligence, player.wisdom, player.charisma)
-                else:
-                    print("Please enter Arcane or Storm.")
-
-    #lets player set a starting level ##############################################
-            levels = int(input("What Level do you want to start from? "))
-
-            for i in range(1, levels):
-                player.levelUP()
-################################################################################
-# End Of Character Creation Branches############################################
 
 # Initial Character Creation with Random stats##################################
 
-else:
+elif((saved_data_exists == False) or (load != 'yes')):
     strength = funcs.d20(8)
     constitution = funcs.d20(10)
     dexterity = funcs.d20(8)
