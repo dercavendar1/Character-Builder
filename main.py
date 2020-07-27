@@ -1,7 +1,7 @@
 import json
-import os
 import pickle
 import random
+from os import path
 
 import funcs
 from barbarian import *
@@ -11,7 +11,7 @@ from fighter import *
 from rogue import *
 from wizard import *
 
-saved_data_exists = os.path.exists("savedcharacter.obj")
+saved_data_exists = path.exists("savedcharacter.obj")
 
 if (saved_data_exists == True):
     load = input('Would you like to load your last saved character? ')
