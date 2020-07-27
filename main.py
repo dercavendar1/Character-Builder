@@ -184,7 +184,7 @@ if(savecharacter.lower() == 'yes'):
     file = open(b"savedcharacter.obj", "wb")
     pickle.dump(player, file)
 
-# TODO: Format the Character sheet for organized presentation
+
 # Creates a printable character sheet###########################################
 characterSheet = input('Do you want a printable Character Sheet? ')
 if(characterSheet == 'yes'):
