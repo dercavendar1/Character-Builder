@@ -27,8 +27,8 @@ def assasin_fight(player, enemy):
             hit = funcs.d20(1)
             evade = funcs.d20(1) + player.dexMod
             player.hp = player.hp - enemy.unarmedAttack(hit, evade)
-        print('Your Health ', player.getStats()["Health"])
-        print('Enemy Health ', enemy.getStats()["Health"])
+        print('Your Health ', player.hp)
+        print('Enemy Health ', enemy.hp)
 
 
 def thief_fight(player, enemy):
@@ -48,8 +48,8 @@ def thief_fight(player, enemy):
             hit = funcs.d20(1)
             evade = funcs.d20(1) + player.dexMod
             player.hp = player.hp - enemy.unarmedAttack(hit, evade)
-        print('Your Health ', player.getStats()["Health"])
-        print('Enemy Health ', enemy.getStats()["Health"])
+        print('Your Health ', player.hp)
+        print('Enemy Health ', enemy.hp)
 
 
 class Rogue(Character):
@@ -91,7 +91,7 @@ class Assasin(Rogue):
 
     def getStats(self):
         stats = super().getStats()
-        stats['SubClass'] = 'Assasin'
+        stats = f'SubClass= Assasin\n' + stats
         return stats
 
     def stealth_attack(self):
@@ -117,7 +117,7 @@ class Thief(Rogue):
 
     def getStats(self):
         stats = super().getStats()
-        stats['SubClass'] = 'Thief'
+        stats = f'SubClass= Thief\n' + stats
         return stats
 
     def finesseWeaponAttack(self, hit, evade):

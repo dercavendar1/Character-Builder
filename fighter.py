@@ -22,8 +22,8 @@ def bow_fight(player, enemy):
             hit = funcs.d20(1)
             evade = funcs.d20(1) + player.dexMod
             player.hp = player.hp - enemy.unarmedAttack(hit, evade)
-        print('Your Health ', player.getStats()["Health"])
-        print('Enemy Health ', enemy.getStats()["Health"])
+        print('Your Health ', player.hp)
+        print('Enemy Health ', enemy.hp)
 
 
 def sword_fight(player, enemy):
@@ -43,8 +43,8 @@ def sword_fight(player, enemy):
             hit = funcs.d20(1)
             evade = funcs.d20(1) + player.dexMod
             player.hp = player.hp - enemy.unarmedAttack(hit, evade)
-        print('Your Health ', player.getStats()["Health"])
-        print('Enemy Health ', enemy.getStats()["Health"])
+        print('Your Health ', player.hp)
+        print('Enemy Health ', enemy.hp)
 
 
 class Fighter(Character):
@@ -86,7 +86,7 @@ class Sword(Fighter):
 
     def getStats(self):
         stats = super().getStats()
-        stats['Weapon'] = 'Sword'
+        stats = f'SubClass= Sword Fighter\n' + stats
         return stats
 
     def heavyWeaponAttack(self, hit, evade):
@@ -110,7 +110,7 @@ class Bow(Fighter):
 
     def getStats(self):
         stats = super().getStats()
-        stats['Weapon'] = 'Bow'
+        stats = f'SubClass= Bow Fighter\n' + stats
         return stats
 
     def finesseWeaponAttack(self, hit, evade):

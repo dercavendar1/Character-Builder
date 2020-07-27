@@ -44,14 +44,8 @@ class Character():
         self.level += 1
 
     def getStats(self):
-        return {"Level": self.level,
-                "Health": self.hp,
-                "Strength": self.strength,
-                "Constitution": self.constitution,
-                "Dexterity": self.dexterity,
-                "Intelligence": self.intelligence,
-                "Wisdom": self.wisdom,
-                "Charisma": self.charisma}
+        stats = f'--------------------\n|Level          |{self.level}|\n|Health         |{self.hp}|\n|Strength       |{self.strength}|\n|Constitution   |{self.constitution}|\n|Dexterity      |{self.dexterity}|\n|Intelligence   |{self.intelligence}|\n|Wisdom         |{self.wisdom}|\n|Charisma       |{self.charisma}|\n--------------------'
+        return stats
 
     def unarmedAttack(self, hit, evade):
         if hit > evade:

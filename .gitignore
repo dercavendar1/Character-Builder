@@ -128,5 +128,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# ignore save data
+# ignore generated data
 savedcharacter.obj
+*.txt

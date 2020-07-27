@@ -186,7 +186,8 @@ if(savecharacter.lower() == 'yes'):
 
 # TODO: Format the Character sheet for organized presentation
 # Creates a printable character sheet###########################################
-# characterSheet = input('Do you want a printable Character Sheet? ')
-# characterSheet = open(r"Character Sheet", "a")
-# characterSheet.write(json.dumps(player.getStats()))
-# characterSheet.close()
+characterSheet = input('Do you want a printable Character Sheet? ')
+if(characterSheet == 'yes'):
+    characterSheet = open(r"Character Sheet.txt", "a")
+    characterSheet.write(json.dumps(player.getStats()))
+    characterSheet.close()

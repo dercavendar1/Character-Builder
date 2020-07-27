@@ -23,8 +23,8 @@ def storm_fight(player, enemy):
             hit = funcs.d20(1)
             evade = funcs.d20(1) + player.dexMod
             player.hp = player.hp - enemy.unarmedAttack(hit, evade)
-        print('Your Health ', player.getStats()["Health"])
-        print('Enemy Health ', enemy.getStats()["Health"])
+        print('Your Health ', player.hp)
+        print('Enemy Health ', enemy.hp)
 
 
 def arcane_fight(player, enemy):
@@ -45,8 +45,8 @@ def arcane_fight(player, enemy):
             hit = funcs.d20(1)
             evade = funcs.d20(1) + player.dexMod
             player.hp = player.hp - enemy.unarmedAttack(hit, evade)
-        print('Your Health ', player.getStats()["Health"])
-        print('Enemy Health ', enemy.getStats()["Health"])
+        print('Your Health ', player.hp)
+        print('Enemy Health ', enemy.hp)
 
 
 class Wizard(Character):
@@ -79,8 +79,8 @@ class Storms(Wizard):
 
     def getStats(self):
         stats = super().getStats()
-        stats['College'] = 'College of Storms'
-        stats['Magic Slots'] = self.magic_slots
+        stats = f'SubClass= Storm Wizard\n' + stats + \
+            f'\n|Magic Slots    |{self.magic_slots}|\n--------------------'
         return stats
 
     def levelUP(self):
@@ -116,8 +116,8 @@ class Arcanum(Wizard):
 
     def getStats(self):
         stats = super().getStats()
-        stats['College'] = 'College of Arcane Magics'
-        stats['Magic Slots'] = self.magic_slots
+        stats = f'SubClass= Arcane Wizard\n' + stats + \
+            f'\n|Magic Slots    |{self.magic_slots}|\n--------------------'
         return stats
 
     def fireball(self, hit, evade, enemyMod):

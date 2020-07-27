@@ -22,8 +22,8 @@ def bard_fight(player, enemy):
             hit = funcs.d20(1)
             evade = funcs.d20(1) + player.dexMod
             player.hp = player.hp - enemy.unarmedAttack(hit, evade)
-        print('Your Health ', player.getStats()["Health"])
-        print('Enemy Health ', enemy.getStats()["Health"])
+        print('Your Health ', player.hp)
+        print('Enemy Health ', enemy.hp)
 
 
 class Bard(Character):
@@ -61,7 +61,7 @@ class Valor(Bard):
 
     def getStats(self):
         stats = super().getStats()
-        stats['College'] = 'College of Valor'
+        stats = f'SubClass= Valor\n' + stats
         return stats
 
 
@@ -78,5 +78,5 @@ class Eloquent(Bard):
 
     def getStats(self):
         stats = super().getStats()
-        stats['College'] = 'College of Eloquence'
+        stats = f'SubClass= Eloquent\n' + stats
         return stats

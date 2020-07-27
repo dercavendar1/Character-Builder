@@ -22,8 +22,8 @@ def barbarian_fight(player, enemy):
             hit = funcs.d20(1)
             evade = funcs.d20(1) + player.dexMod
             player.hp = player.hp - enemy.unarmedAttack(hit, evade)
-        print('Your Health ', player.getStats()["Health"])
-        print('Enemy Health ', enemy.getStats()["Health"])
+        print('Your Health ', player.hp)
+        print('Enemy Health ', enemy.hp)
 
 
 class Barbarian(Character):
@@ -61,7 +61,7 @@ class Totem(Barbarian):
 
     def getStats(self):
         stats = super().getStats()
-        stats['Sub Class'] = 'Totem'
+        stats = f'SubClass= Totem\n' + stats
         return stats
 
 
@@ -78,5 +78,5 @@ class Tank(Barbarian):
 
     def getStats(self):
         stats = super().getStats()
-        stats['Sub Class'] = 'Tank'
+        stats = f'SubClass= Tank\n' + stats
         return stats
