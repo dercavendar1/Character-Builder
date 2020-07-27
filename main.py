@@ -1,7 +1,7 @@
 import json
 import pickle
 import random
-from os import path
+from os import path, remove
 
 import funcs
 from barbarian import *
@@ -188,6 +188,9 @@ if(savecharacter.lower() == 'yes'):
 # Creates a printable character sheet###########################################
 characterSheet = input('Do you want a printable Character Sheet? ')
 if(characterSheet == 'yes'):
+    if(path.exists("Character Sheet.txt")):
+        remove("Character Sheet.txt")
+
     characterSheet = open(r"Character Sheet.txt", "a")
-    characterSheet.write(json.dumps(player.getStats()))
+    characterSheet.write(player.getStats())
     characterSheet.close()
