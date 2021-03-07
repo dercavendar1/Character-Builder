@@ -131,3 +131,6 @@ dmypy.json
 # ignore generated data
 savedcharacter.obj
 *.txt
+
+# ignore vs code added stuff
+/.vscode
