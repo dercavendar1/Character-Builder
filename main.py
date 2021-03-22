@@ -1,4 +1,3 @@
-import json
 import pickle
 import random
 from os import path, remove
@@ -11,21 +10,20 @@ from fighter import *
 from rogue import *
 from wizard import *
 
+# Checks if a saved character already exists###################################
 saved_data_exists = path.exists("savedcharacter.obj")
 
 if (saved_data_exists == True):
     load = input('Would you like to load your last saved character? ')
 else:
     load = 'no'
-# Load Previously Saved Character###############################################
+# Load Previously Saved Character##############################################
 if (load == 'yes'):
     file = open('savedcharacter.obj', 'rb')
     player = pickle.load(file)
 
-
-# Initial Character Creation with Random stats##################################
-
-elif((saved_data_exists == False) or (load != 'yes')):
+# Initial Character Creation with Random stats#################################
+elif((saved_data_exists is False) or (load != 'yes')):
     strength = funcs.d20(8)
     constitution = funcs.d20(10)
     dexterity = funcs.d20(8)
@@ -37,16 +35,16 @@ elif((saved_data_exists == False) or (load != 'yes')):
                        intelligence, wisdom, charisma)
     print(player.getStats())
 
-#Allows user to choose what class their character is and resets character#####
+# Allows user to choose what class their character is and resets character#####
     characterClass = None
     while characterClass not in ('bard', 'wizard', 'fighter', 'rogue', 'barbarian'):
         characterClass = input(
             'What Class Do You Want (Barbarian, Bard, Fighter, Rogue, or Wizard)? ').lower()
 ###############################################################################
 
-# Branching Paths that allow user to choose sub class appropriate to chosen class
+# Branching Paths allow user to choose sub class appropriate to chosen class
 
-# Barbarian Class Branch########################################################
+# Barbarian Class Branch#######################################################
     if (characterClass.lower() == 'barbarian'):
         player = Barbarian(player.strength, player.constitution, player.dexterity,
                            player.intelligence, player.wisdom, player.charisma)
@@ -172,6 +170,7 @@ if (player.hp > enemy.hp):
         f'You Got {expGained} EXP!!! only {300 - player.exp} left to the next level!')
 else:
     print("\nYou Lose")
+
 
 if(player.exp >= 300):
     while(player.exp >= 300):
