@@ -37,9 +37,11 @@ elif((saved_data_exists is False) or (load != 'yes')):
 
 # Allows user to choose what class their character is and resets character#####
     characterClass = None
-    while characterClass not in ('bard', 'wizard', 'fighter', 'rogue', 'barbarian'):
-        characterClass = input(
-            'What Class Do You Want (Barbarian, Bard, Fighter, Rogue, or Wizard)? ').lower()
+    while characterClass not in ('bard', 'wizard', 'fighter',
+                                 'rogue', 'barbarian'):
+        characterClass = input('What Class Do You Want'
+                               '(Barbarian, Bard, Fighter,'
+                               'Rogue, or Wizard)? ').lower()
 ###############################################################################
 
 # Branching Paths allow user to choose sub class appropriate to chosen class
