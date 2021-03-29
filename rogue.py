@@ -1,6 +1,3 @@
-import math
-import random
-
 import funcs
 from character import Character
 
@@ -8,7 +5,7 @@ from character import Character
 def assasin_fight(player, enemy):
     while (player.hp > 0 and enemy.hp > 0):
 
-        if(player.stealth_flag == True):
+        if(player.stealth_flag is True):
             print('Stealth Attack First Strike!')
             enemy.hp -= player.stealth_attack()
             print(enemy.hp)
@@ -76,8 +73,10 @@ class Rogue(Character):
 
 
 class Assasin(Rogue):
-    def __init__(self, strength, constitution, dexterity, intelligence, wisdom, charisma):
-        super().__init__(strength, constitution, dexterity, intelligence, wisdom, charisma)
+    def __init__(self, strength, constitution, dexterity, intelligence,
+                 wisdom, charisma):
+        super().__init__(strength, constitution, dexterity, intelligence,
+                         wisdom, charisma)
         self.strength = strength + 1
         self.dexterity = dexterity + 2
         self.strMod = int(float(self.strength - 10) / 2)
@@ -91,11 +90,11 @@ class Assasin(Rogue):
 
     def getStats(self):
         stats = super().getStats()
-        stats = f'SubClass= Assasin\n' + stats
+        stats = 'SubClass= Assasin\n' + stats
         return stats
 
     def stealth_attack(self):
-        if(self.stealth_flag == False):
+        if(self.stealth_flag is False):
             damage = (funcs.d8(1) + funcs.d8(1) + funcs.d8(1)) + \
                 self.strMod + self.dexMod
             self.Stealth_flag = True
@@ -105,8 +104,10 @@ class Assasin(Rogue):
 
 
 class Thief(Rogue):
-    def __init__(self, strength, constitution, dexterity, intelligence, wisdom, charisma):
-        super().__init__(strength, constitution, dexterity, intelligence, wisdom, charisma)
+    def __init__(self, strength, constitution, dexterity, intelligence,
+                 wisdom, charisma):
+        super().__init__(strength, constitution, dexterity, intelligence,
+                         wisdom, charisma)
         self.dexterity = dexterity + 3
         self.strMod = int(float(self.strength - 10) / 2)
         self.conMod = int(float(self.constitution - 10) / 2)
@@ -117,7 +118,7 @@ class Thief(Rogue):
 
     def getStats(self):
         stats = super().getStats()
-        stats = f'SubClass= Thief\n' + stats
+        stats = 'SubClass= Thief\n' + stats
         return stats
 
     def finesseWeaponAttack(self, hit, evade):

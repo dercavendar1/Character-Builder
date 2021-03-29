@@ -1,6 +1,3 @@
-import math
-import random
-
 import funcs
 from character import Character
 
@@ -47,8 +44,10 @@ class Bard(Character):
 
 
 class Valor(Bard):
-    def __init__(self, strength, constitution, dexterity, intelligence, wisdom, charisma):
-        super().__init__(strength, constitution, dexterity, intelligence, wisdom, charisma)
+    def __init__(self, strength, constitution, dexterity, intelligence,
+                 wisdom, charisma):
+        super().__init__(strength, constitution, dexterity, intelligence,
+                         wisdom, charisma)
         self.charisma = charisma + 1
         self.strength = strength + 1
         self.dexterity = dexterity + 1
@@ -61,13 +60,15 @@ class Valor(Bard):
 
     def getStats(self):
         stats = super().getStats()
-        stats = f'SubClass= Valor\n' + stats
+        stats = 'SubClass= Valor\n' + stats
         return stats
 
 
 class Eloquent(Bard):
-    def __init__(self, strength, constitution, dexterity, intelligence, wisdom, charisma):
-        super().__init__(strength, constitution, dexterity, intelligence, wisdom, charisma)
+    def __init__(self, strength, constitution, dexterity, intelligence,
+                 wisdom, charisma):
+        super().__init__(strength, constitution, dexterity, intelligence,
+                         wisdom, charisma)
         self.charisma = charisma + 3
         self.strMod = int(float(self.strength - 10) / 2)
         self.conMod = int(float(self.constitution - 10) / 2)
@@ -78,5 +79,5 @@ class Eloquent(Bard):
 
     def getStats(self):
         stats = super().getStats()
-        stats = f'SubClass= Eloquent\n' + stats
+        stats = 'SubClass= Eloquent\n' + stats
         return stats

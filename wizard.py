@@ -1,6 +1,3 @@
-import math
-import random
-
 import funcs
 from character import Character
 
@@ -8,7 +5,8 @@ from character import Character
 def storm_fight(player, enemy):
     while (player.hp > 0 and enemy.hp > 0):
         attack_type = input("Unarmed or Lightning Bolt? ")
-        if(attack_type.lower() == 'bolt' or attack_type.lower() == 'lightning' or attack_type.lower() == 'magic'):
+        if(attack_type.lower() == 'bolt' or attack_type.lower() == 'lightning'
+           or attack_type.lower() == 'magic'):
             hit = funcs.d20(1)
             evade = funcs.d20(1) + enemy.dexMod
             enemy.hp = enemy.hp - \
@@ -30,7 +28,8 @@ def storm_fight(player, enemy):
 def arcane_fight(player, enemy):
     while (player.hp > 0 and enemy.hp > 0):
         attack_type = input("Unarmed or Fireball? ")
-        if(attack_type.lower() == 'ball' or attack_type.lower() == 'fireball' or attack_type.lower() == 'magic'):
+        if(attack_type.lower() == 'ball' or attack_type.lower() == 'fireball'
+           or attack_type.lower() == 'magic'):
             hit = funcs.d20(1)
             evade = funcs.d20(1) + enemy.dexMod
             enemy.hp = enemy.hp - \
@@ -65,8 +64,10 @@ class Wizard(Character):
 
 
 class Storms(Wizard):
-    def __init__(self, strength, constitution, dexterity, intelligence, wisdom, charisma):
-        super().__init__(strength, constitution, dexterity, intelligence, wisdom, charisma)
+    def __init__(self, strength, constitution, dexterity, intelligence,
+                 wisdom, charisma):
+        super().__init__(strength, constitution, dexterity, intelligence,
+                         wisdom, charisma)
         self.intelligence = intelligence + 2
         self.wisdom = wisdom + 1
         self.strMod = int(float(self.strength - 10) / 2)
@@ -79,8 +80,9 @@ class Storms(Wizard):
 
     def getStats(self):
         stats = super().getStats()
-        stats = f'SubClass= Storm Wizard\n' + stats + \
-            f'\n|Magic Slots    |{self.magic_slots}|\n--------------------'
+        stats = (f'SubClass= Storm Wizard\n' + stats
+                 f'\n|Magic Slots    |{self.magic_slots}|'
+                 f'\n--------------------')
         return stats
 
     def levelUP(self):
