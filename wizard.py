@@ -80,8 +80,8 @@ class Storms(Wizard):
 
     def getStats(self):
         stats = super().getStats()
-        stats = (f'SubClass= Storm Wizard\n' + stats
-                 f'\n|Magic Slots    |{self.magic_slots}|'
+        stats = ('SubClass= Storm Wizard\n' + stats +
+                 f'\n|Magic Slots    |{self.magic_slots:3}|'
                  f'\n--------------------')
         return stats
 
@@ -105,8 +105,10 @@ class Storms(Wizard):
 
 
 class Arcanum(Wizard):
-    def __init__(self, strength, constitution, dexterity, intelligence, wisdom, charisma):
-        super().__init__(strength, constitution, dexterity, intelligence, wisdom, charisma)
+    def __init__(self, strength, constitution, dexterity, intelligence,
+                 wisdom, charisma):
+        super().__init__(strength, constitution, dexterity, intelligence,
+                         wisdom, charisma)
         self.intelligence = intelligence + 3
         self.strMod = int(float(self.strength - 10) / 2)
         self.conMod = int(float(self.constitution - 10) / 2)
@@ -118,8 +120,9 @@ class Arcanum(Wizard):
 
     def getStats(self):
         stats = super().getStats()
-        stats = f'SubClass= Arcane Wizard\n' + stats + \
-            f'\n|Magic Slots    |{self.magic_slots}|\n--------------------'
+        stats = ('SubClass= Arcane Wizard\n' + stats +
+                 f'\n|Magic Slots    |{self.magic_slots:3}|'
+                 f'\n--------------------')
         return stats
 
     def fireball(self, hit, evade, enemyMod):
