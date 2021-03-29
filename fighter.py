@@ -1,6 +1,3 @@
-import math
-import random
-
 import funcs
 from character import Character
 
@@ -74,8 +71,10 @@ class Fighter(Character):
 
 
 class Sword(Fighter):
-    def __init__(self, strength, constitution, dexterity, intelligence, wisdom, charisma):
-        super().__init__(strength, constitution, dexterity, intelligence, wisdom, charisma)
+    def __init__(self, strength, constitution, dexterity, intelligence,
+                 wisdom, charisma):
+        super().__init__(strength, constitution, dexterity, intelligence,
+                         wisdom, charisma)
         self.strength = strength + 3
         self.strMod = int(float(self.strength - 10) / 2)
         self.conMod = int(float(self.constitution - 10) / 2)
@@ -86,7 +85,7 @@ class Sword(Fighter):
 
     def getStats(self):
         stats = super().getStats()
-        stats = f'SubClass= Sword Fighter\n' + stats
+        stats = 'SubClass= Sword Fighter\n' + stats
         return stats
 
     def heavyWeaponAttack(self, hit, evade):
@@ -98,8 +97,10 @@ class Sword(Fighter):
 
 
 class Bow(Fighter):
-    def __init__(self, strength, constitution, dexterity, intelligence, wisdom, charisma):
-        super().__init__(strength, constitution, dexterity, intelligence, wisdom, charisma)
+    def __init__(self, strength, constitution, dexterity, intelligence,
+                 wisdom, charisma):
+        super().__init__(strength, constitution, dexterity, intelligence,
+                         wisdom, charisma)
         self.dexterity = dexterity + 3
         self.strMod = int(float(self.strength - 10) / 2)
         self.conMod = int(float(self.constitution - 10) / 2)
@@ -110,7 +111,7 @@ class Bow(Fighter):
 
     def getStats(self):
         stats = super().getStats()
-        stats = f'SubClass= Bow Fighter\n' + stats
+        stats = 'SubClass= Bow Fighter\n' + stats
         return stats
 
     def finesseWeaponAttack(self, hit, evade):
