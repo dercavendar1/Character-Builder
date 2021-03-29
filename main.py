@@ -1,29 +1,26 @@
 import pickle
-import random
 from os import path, remove
 
 import funcs
-from barbarian import *
-from bard import *
-from character import *
-from fighter import *
-from rogue import *
-from wizard import *
+from barbarian import Barbarian, Tank, Totem
+from bard import Bard, Eloquent, Valor
+from character import Character
+from fighter import Fighter, Sword, Bow
+from rogue import Rogue, Assasin, Thief
+from wizard import Wizard, Storms, Arcanum
 
 # Checks if a saved character already exists###################################
-saved_data_exists = path.exists("savedcharacter.obj")
+load = 'no'
 
-if (saved_data_exists == True):
+if (path.exists("savedcharacter.obj") is True):
     load = input('Would you like to load your last saved character? ')
-else:
-    load = 'no'
 # Load Previously Saved Character##############################################
 if (load == 'yes'):
     file = open('savedcharacter.obj', 'rb')
     player = pickle.load(file)
 
 # Initial Character Creation with Random stats#################################
-elif((saved_data_exists is False) or (load != 'yes')):
+elif((path.exists("savedcharacter.obj") is False) or (load != 'yes')):
     strength = funcs.d20(8)
     constitution = funcs.d20(10)
     dexterity = funcs.d20(8)
@@ -48,23 +45,35 @@ elif((saved_data_exists is False) or (load != 'yes')):
 
 # Barbarian Class Branch#######################################################
     if (characterClass.lower() == 'barbarian'):
-        player = Barbarian(player.strength, player.constitution, player.dexterity,
-                           player.intelligence, player.wisdom, player.charisma)
+        player = Barbarian(player.strength,
+                           player.constitution,
+                           player.dexterity,
+                           player.intelligence,
+                           player.wisdom,
+                           player.charisma)
         print(player.getStats())
         answer = None
         while answer not in ("totem", "tank"):
             answer = input("What Sub Class (Totem or Tank): ").lower()
             if(answer == "totem"):
-                player = Totem(player.strength, player.constitution, player.dexterity,
-                               player.intelligence, player.wisdom, player.charisma)
+                player = Totem(player.strength,
+                               player.constitution,
+                               player.dexterity,
+                               player.intelligence,
+                               player.wisdom,
+                               player.charisma)
             elif(answer == "tank"):
-                player = Tank(player.strength, player.constitution, player.dexterity,
-                              player.intelligence, player.wisdom, player.charisma)
+                player = Tank(player.strength,
+                              player.constitution,
+                              player.dexterity,
+                              player.intelligence,
+                              player.wisdom,
+                              player.charisma)
             else:
                 print("Please enter Totem or Tank.")
-################################################################################
+###############################################################################
 
-# Bard Class Branch#############################################################
+# Bard Class Branch############################################################
     if (characterClass.lower() == 'bard'):
         player = Bard(player.strength, player.constitution, player.dexterity,
                       player.intelligence, player.wisdom, player.charisma)
@@ -73,77 +82,121 @@ elif((saved_data_exists is False) or (load != 'yes')):
         while answer not in ("eloquent", "valor"):
             answer = input("What Sub Class (Eloquent or Valor): ").lower()
             if(answer == "eloquent"):
-                player = Eloquent(player.strength, player.constitution, player.dexterity,
-                                  player.intelligence, player.wisdom, player.charisma)
+                player = Eloquent(player.strength,
+                                  player.constitution,
+                                  player.dexterity,
+                                  player.intelligence,
+                                  player.wisdom,
+                                  player.charisma)
             elif(answer == "valor"):
-                player = Valor(player.strength, player.constitution, player.dexterity,
-                               player.intelligence, player.wisdom, player.charisma)
+                player = Valor(player.strength,
+                               player.constitution,
+                               player.dexterity,
+                               player.intelligence,
+                               player.wisdom,
+                               player.charisma)
             else:
                 print("Please enter Eloquent or Valor.")
-################################################################################
+###############################################################################
 
-# Fighter Class  Branch#########################################################
+# Fighter Class  Branch########################################################
     if (characterClass.lower() == 'fighter'):
-        player = Fighter(player.strength, player.constitution, player.dexterity,
-                         player.intelligence, player.wisdom, player.charisma)
+        player = Fighter(player.strength,
+                         player.constitution,
+                         player.dexterity,
+                         player.intelligence,
+                         player.wisdom,
+                         player.charisma)
         print(player.getStats())
         answer = None
         while answer not in ("sword", "bow"):
             answer = input("What Sub Class (Sword or Bow): ").lower()
             if(answer == "sword"):
-                player = Sword(player.strength, player.constitution, player.dexterity,
-                               player.intelligence, player.wisdom, player.charisma)
+                player = Sword(player.strength,
+                               player.constitution,
+                               player.dexterity,
+                               player.intelligence,
+                               player.wisdom,
+                               player.charisma)
             elif(answer == "bow"):
-                player = Bow(player.strength, player.constitution, player.dexterity,
-                             player.intelligence, player.wisdom, player.charisma)
+                player = Bow(player.strength,
+                             player.constitution,
+                             player.dexterity,
+                             player.intelligence,
+                             player.wisdom,
+                             player.charisma)
             else:
                 print("Please enter Sword or Bow.")
-################################################################################
+###############################################################################
 
-# Rogue Class Branch############################################################
+# Rogue Class Branch###########################################################
     if (characterClass.lower() == 'rogue'):
-        player = Rogue(player.strength, player.constitution, player.dexterity,
-                       player.intelligence, player.wisdom, player.charisma)
+        player = Rogue(player.strength,
+                       player.constitution,
+                       player.dexterity,
+                       player.intelligence,
+                       player.wisdom,
+                       player.charisma)
         print(player.getStats())
         answer = None
         while answer not in ("assasin", "thief"):
             answer = input("What Sub Class (Assasin or Thief): ").lower()
             if(answer == "assasin"):
-                player = Assasin(player.strength, player.constitution, player.dexterity,
-                                 player.intelligence, player.wisdom, player.charisma)
+                player = Assasin(player.strength,
+                                 player.constitution,
+                                 player.dexterity,
+                                 player.intelligence,
+                                 player.wisdom,
+                                 player.charisma)
             elif(answer == "thief"):
-                player = Thief(player.strength, player.constitution, player.dexterity,
-                               player.intelligence, player.wisdom, player.charisma)
+                player = Thief(player.strength,
+                               player.constitution,
+                               player.dexterity,
+                               player.intelligence,
+                               player.wisdom,
+                               player.charisma)
             else:
                 print("Please enter Assasin or Thief.")
-################################################################################
+###############################################################################
 
-# Wizard Class Branch###########################################################
+# Wizard Class Branch##########################################################
     if (characterClass.lower() == 'wizard'):
-        player = Wizard(player.strength, player.constitution, player.dexterity,
-                        player.intelligence, player.wisdom, player.charisma)
+        player = Wizard(player.strength,
+                        player.constitution,
+                        player.dexterity,
+                        player.intelligence,
+                        player.wisdom,
+                        player.charisma)
         print(player.getStats())
         answer = None
         while answer not in ("arcane", "storm"):
             answer = input("What Speciality (Arcane or Storm): ").lower()
             if(answer == "arcane"):
-                player = Arcanum(player.strength, player.constitution, player.dexterity,
-                                 player.intelligence, player.wisdom, player.charisma)
+                player = Arcanum(player.strength,
+                                 player.constitution,
+                                 player.dexterity,
+                                 player.intelligence,
+                                 player.wisdom,
+                                 player.charisma)
             elif(answer == "storm"):
-                player = Storms(player.strength, player.constitution, player.dexterity,
-                                player.intelligence, player.wisdom, player.charisma)
+                player = Storms(player.strength,
+                                player.constitution,
+                                player.dexterity,
+                                player.intelligence,
+                                player.wisdom,
+                                player.charisma)
             else:
                 print("Please enter Arcane or Storm.")
 
-#lets player set a starting level ##############################################
+# lets player set a starting level#############################################
         levels = int(input("What Level do you want to start from? "))
 
         for i in range(1, levels):
             player.levelUP()
-################################################################################
-# End Of Character Creation Branches############################################
+###############################################################################
+# End Of Character Creation Branches###########################################
 
-#Creates an enemy with reduced possible stats###################################
+# Creates an enemy with reduced possible stats#################################
 strength = funcs.d20(8)
 constitution = funcs.d20(10)
 dexterity = funcs.d20(8)
@@ -156,7 +209,7 @@ enemy = Character(strength, constitution, dexterity,
 
 while(enemy.level < player.level):
     enemy.levelUP()
-################################################################################
+###############################################################################
 
 print(player.getStats(), '\n')
 print(enemy.getStats(), '\n')
@@ -169,7 +222,8 @@ if (player.hp > enemy.hp):
     expGained = int(300 * modDiff)
     player.exp = player.exp + expGained
     print(
-        f'You Got {expGained} EXP!!! only {300 - player.exp} left to the next level!')
+        f'You Got {expGained} EXP!!! only {300 - player.exp}'
+        'left to the next level!')
 else:
     print("\nYou Lose")
 
@@ -179,14 +233,14 @@ if(player.exp >= 300):
         player.levelUP()
         player.exp = player.exp - 300
 
-# Saves current character#######################################################
+# Saves current character######################################################
 savecharacter = input('Do you want to save this character? ')
 if(savecharacter.lower() == 'yes'):
     file = open(b"savedcharacter.obj", "wb")
     pickle.dump(player, file)
 
 
-# Creates a printable character sheet###########################################
+# Creates a printable character sheet##########################################
 characterSheet = input('Do you want a printable Character Sheet? ')
 if(characterSheet == 'yes'):
     if(path.exists("Character Sheet.txt")):
