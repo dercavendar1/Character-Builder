@@ -1,7 +1,7 @@
-import pickle
 from os import path, remove
 
 import funcs
+from save_data import save_data, load_data
 from barbarian import Barbarian, Tank, Totem
 from bard import Bard, Eloquent, Valor
 from character import Character
@@ -17,7 +17,7 @@ if (path.exists("savedcharacter.obj") is True):
 # Load Previously Saved Character##############################################
 if (load == 'yes'):
     file = open('savedcharacter.obj', 'rb')
-    player = pickle.load(file)
+    save_data(file)
 
 # Initial Character Creation with Random stats#################################
 elif((path.exists("savedcharacter.obj") is False) or (load != 'yes')):
@@ -237,7 +237,7 @@ if(player.exp >= 300):
 savecharacter = input('Do you want to save this character? ')
 if(savecharacter.lower() == 'yes'):
     file = open(b"savedcharacter.obj", "wb")
-    pickle.dump(player, file)
+    load_data(file)
 
 
 # Creates a printable character sheet##########################################
